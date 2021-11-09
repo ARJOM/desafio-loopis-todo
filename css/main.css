@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+
+    background-image: linear-gradient(63.18deg, #472F9F 0%, #0070E4 26.81%, #009FDF 48.59%, rgba(0, 197, 146, 0.72) 68.35%, rgba(78, 224, 0, 0.86) 85.97%);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h1, button {
+    font-family: 'Nunito', sans-serif;
+}
+
+h3 {
+    width: 200px;
+    text-align: center;
+    font-family: 'Rufina', serif;
+    overflow-wrap: break-word;
+}
+
+button {
+    width: 17vw;
+    height: 10vh;
+    font-size: xx-large;
+
+    border-radius: 75px;
+}
+
+.texto {
+    margin: 10vh;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
