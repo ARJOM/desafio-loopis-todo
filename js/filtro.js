@@ -7,10 +7,8 @@ busca.addEventListener("input", function(){
         nome = nome.toLowerCase()
         let busca = this.value.toLowerCase()
         if (!nome.includes(busca)){
-            console.log("esconde")
             esconder(item)
         } else {
-            console.log("mostra")
             mostrar(item)
         }
     })

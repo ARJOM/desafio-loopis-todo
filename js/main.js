@@ -100,7 +100,7 @@ function generateHTMLToDo(todo){
 	todoContainer.appendChild(todoInfo)
 	todoContainer.appendChild(todoOptions)
 
-	let section = document.querySelector('section')
+	let section = document.querySelector('.todos')
 	section.appendChild(todoContainer)
 }
 
