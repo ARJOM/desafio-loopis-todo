@@ -1,19 +1,16 @@
 // Todo
 
 window.onload = () => {
-	const todos = loadTodos()
+	const todos = loadTodos() 
+	todos.sort((first, second) => first.id - second.id)
 	if (todos !== null)	todos.forEach(todo => generateHTMLToDo(todo))
 	else setTodos([])
 }
 
 function getTodoById(id){
 	const todos = loadTodos()
-	todos.forEach(todo => {
-		if (todo.id == id){
-			return todo
-		}
-	})
-	return null
+	const todo = todos.filter(todo => todo.id === id)[0]
+	return todo
 }
 
 function addTodo(todo){
@@ -46,6 +43,21 @@ function editTodoForm(id){
 	addTodo(updatedTodo)
 }
 
+function changeStatus(id){
+	const todo = getTodoById(id)
+	deleteTodo(id)
+	
+	let status;
+	if (todo.status == 'done'){
+		status = 'backlog'
+	} else {
+		status = 'done'
+	}
+
+	const updatedTodo = {...todo, status}
+	addTodo(updatedTodo)
+}
+
 // Funções de renderização
 
 function generateHTMLToDo(todo){
@@ -57,6 +69,9 @@ function generateHTMLToDo(todo){
 	todoInfo.classList.add(todo.status)
 	todoInfo.addEventListener("click", function(){
 		changeCheck(this)
+	})
+	todoInfo.addEventListener("click", function(){
+		changeStatus(todo.id)
 	})
 
 	let todoIcon = document.createElement('div')
