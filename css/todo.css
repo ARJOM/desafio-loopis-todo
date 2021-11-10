@@ -67,7 +67,7 @@ section {
     margin: 5px;
 }
 
-.add-button img:hover{
+.add-button img:hover, .clickable:hover{
     cursor: pointer;
 }
 

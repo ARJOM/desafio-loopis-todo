@@ -108,6 +108,7 @@ function generateHTMLToDo(todo){
 	let editImg = document.createElement('img')
 	editImg.src = "../assets/icons/Edit.svg"
 	editImg.height = "20"
+	editImg.classList.add("clickable")
 
 	let editModal = document.createElement('div')
 	editModal.classList.add("modal")
@@ -159,6 +160,7 @@ function generateHTMLToDo(todo){
 	let deleteImg = document.createElement('img')
 	deleteImg.src = "../assets/icons/trash-alt.svg"
 	deleteImg.height = "20"
+	deleteImg.classList.add("clickable")
 
 	let deleteModal = document.createElement('div')
 	deleteModal.classList.add("modal")
