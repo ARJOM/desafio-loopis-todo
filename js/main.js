@@ -25,7 +25,7 @@ window.onload = () => {
 	salvar.addEventListener("click", function(){
 		addTodoForm()
 	})
-	
+
 }
 
 function getTodoById(id){
@@ -60,9 +60,10 @@ function editTodoForm(id){
 	const todo = getTodoById(id)
 	deleteTodo(id)
 
-	const name = document.querySelector('#todo-input').value
+	const name = document.querySelector(`#todo-input-${todo.id}`).value
 	const updatedTodo = {...todo, name}
 	addTodo(updatedTodo)
+	window.location.reload()
 }
 
 function changeStatus(id){
@@ -108,6 +109,54 @@ function generateHTMLToDo(todo){
 	editImg.src = "../assets/icons/Edit.svg"
 	editImg.height = "20"
 
+	let editModal = document.createElement('div')
+	editModal.id = `myModal-${todo.id}`
+	editModal.classList.add("modal")
+	
+	let editModelContent = document.createElement('div')
+	editModelContent.classList.add("modal-content")
+
+	let closeButton = document.createElement('span')
+	closeButton.classList.add("close")
+	closeButton.innerHTML = '&times;'
+
+	closeButton.addEventListener("click", function() {
+		editModal.style.display = "none";
+	})
+
+	window.addEventListener("click", function(event) {
+		if (event.target == editModal) {
+		  editModal.style.display = "none";
+		}
+	})
+
+	let editModalForm = document.createElement('div')
+	
+	let inputName = document.createElement('input')
+	inputName.type = "text"
+	inputName.id = `todo-input-${todo.id}`
+	inputName.placeholder = "Digite o novo nome da tarefa"
+	inputName.value = todo.name
+
+	let editButton = document.createElement('button')
+	editButton.id = "edit-button"
+	editButton.textContent = "Salvar"
+	editButton.addEventListener("click", function(){
+		editTodoForm(todo.id)
+	})
+
+	editModalForm.appendChild(inputName)
+	editModalForm.appendChild(editButton)
+
+	editModelContent.appendChild(closeButton)
+	editModelContent.appendChild(editModalForm)
+
+	editModal.appendChild(editModelContent)
+
+	editImg.addEventListener("click", function(){
+		editModal.style.display = "block";
+	})
+
 	let deleteImg = document.createElement('img')
 	deleteImg.src = "../assets/icons/trash-alt.svg"
 	deleteImg.height = "20"
@@ -117,6 +166,7 @@ function generateHTMLToDo(todo){
 	todoInfo.appendChild(name)
 
 	todoOptions.appendChild(editImg)
+	todoOptions.appendChild(editModal)
 	todoOptions.appendChild(deleteImg)
 
 	todoContainer.appendChild(todoInfo)
