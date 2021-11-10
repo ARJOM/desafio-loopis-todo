@@ -2,8 +2,20 @@
 
 window.onload = () => {
 	const todos = loadTodos() 
-	todos.sort((first, second) => first.id - second.id)
-	if (todos !== null)	todos.forEach(todo => generateHTMLToDo(todo))
+	if (todos !== null)	{
+		
+		todos.sort((first, second) => {
+			if (second.name < first.name){
+				return 1
+			} else if (first.name < second.name){
+				return -1
+			} else {
+				return first.id - second.id
+			}
+		})
+
+		todos.forEach(todo => generateHTMLToDo(todo))
+	}
 	else setTodos([])
 }
 
