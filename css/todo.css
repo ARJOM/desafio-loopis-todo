@@ -1,0 +1,48 @@
+.esconder {
+    display: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 50vw;
+    height: 80vh;
+    
+    background: rgba(255, 255, 255, 0.34);
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container h1 {
+    font-family: 'Nunito', sans-serif;
+}
+
+nav {
+    width: 45vw;
+    height: 8vh;
+    background: #E5E5E5;
+    border-radius: 5px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pesquisa {
+    width: 42vw;
+    height: 5vh;
+
+    border: none;
+    border-radius: 5px;
+    background: #FFFFFF url(../assets/icons/Vector.svg) no-repeat 83vh 1vh;
+    
+    padding-left: 15px;
+    font-size: large;    
+}

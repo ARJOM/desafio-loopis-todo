@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h1, button {
+    font-family: 'Nunito', sans-serif;
+}
+
+h3 {
+    width: 200px;
+    text-align: center;
+    font-family: 'Rufina', serif;
+    overflow-wrap: break-word;
+}
+
+button {
+    width: 17vw;
+    height: 10vh;
+    font-size: xx-large;
+
+    border-radius: 75px;
+}
+
+.texto {
+    margin: 10vh;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
