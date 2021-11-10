@@ -1,15 +1,52 @@
 // Todo
 
-const todos = [
-	{id: 1, name: 'Preparar almoço', status: 'done'},
-	{id: 2, name: 'Preparar almoço', status: 'backlog'}
-]
+window.onload = () => {
+	const todos = loadTodos()
+	if (todos !== null)	todos.forEach(todo => generateHTMLToDo(todo))
+	else setTodos([])
+}
 
-todos.forEach(todo => generateHTMLToDo(todo))
+function getTodoById(id){
+	const todos = loadTodos()
+	todos.forEach(todo => {
+		if (todo.id == id){
+			return todo
+		}
+	})
+	return null
+}
 
+function addTodo(todo){
+	const todos = loadTodos()
+	todos.push(todo)
+	setTodos(todos)
+}
 
+function deleteTodo(id){
+	const todos = loadTodos()
+	const updatedTodos = todos.filter(todo => todo.id != id)
+	setTodos(updatedTodos)
+}
 
-// Funções Úteis
+function addTodoForm(){
+	const status = 'backlog'
+	const id = new Date().valueOf();
+	const name = document.querySelector('#todo-input').value
+
+	const todo = {id, name, status}
+	addTodo(todo)
+}
+
+function editTodoForm(id){
+	const todo = getTodoById(id)
+	deleteTodo(id)
+
+	const name = document.querySelector('#todo-input').value
+	const updatedTodo = {...todo, name}
+	addTodo(updatedTodo)
+}
+
+// Funções de renderização
 
 function generateHTMLToDo(todo){
 	let todoContainer = document.createElement('div')
@@ -50,6 +87,17 @@ function generateHTMLToDo(todo){
 
 	let section = document.querySelector('section')
 	section.appendChild(todoContainer)
+}
+
+
+// Funções Úteis
+
+function loadTodos(){
+	return getObjectLocalStorage('todos')
+}
+
+function setTodos(todos){
+	setObjectLocalStorage('todos', todos)
 }
 
 function setObjectLocalStorage(key,value){
