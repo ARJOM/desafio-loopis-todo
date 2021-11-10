@@ -70,3 +70,10 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.remove-text {
+    width: 75%;
+    color: #FFF;
+    font-size: x-large;
+    text-align: center;
+}

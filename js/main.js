@@ -110,7 +110,6 @@ function generateHTMLToDo(todo){
 	editImg.height = "20"
 
 	let editModal = document.createElement('div')
-	editModal.id = `myModal-${todo.id}`
 	editModal.classList.add("modal")
 	
 	let editModelContent = document.createElement('div')
@@ -161,6 +160,53 @@ function generateHTMLToDo(todo){
 	deleteImg.src = "../assets/icons/trash-alt.svg"
 	deleteImg.height = "20"
 
+	let deleteModal = document.createElement('div')
+	deleteModal.classList.add("modal")
+	
+	let deleteModelContent = document.createElement('div')
+	deleteModelContent.classList.add("modal-content")
+
+	let closeButtonDelete = document.createElement('span')
+	closeButtonDelete.classList.add("close")
+	closeButtonDelete.innerHTML = '&times;'
+
+	closeButtonDelete.addEventListener("click", function() {
+		deleteModal.style.display = "none";
+	})
+
+	window.addEventListener("click", function(event) {
+		if (event.target == deleteModal) {
+		  deleteModal.style.display = "none";
+		}
+	})
+
+	let deleteModalForm = document.createElement('div')
+	
+	let deleteLabel = document.createElement('p')
+	deleteLabel.textContent = `Tem certeza que deseja excluir a tarefa: ${todo.name}`
+	deleteLabel.classList.add("remove-text")
+
+	let deleteButton = document.createElement('button')
+	deleteButton.id = "delete-button"
+	deleteButton.textContent = "Excluir"
+	deleteButton.addEventListener("click", function(){
+		deleteTodo(todo.id)
+		window.location.reload()
+	})
+
+	deleteModalForm.appendChild(deleteLabel)
+	deleteModalForm.appendChild(deleteButton)
+
+	deleteModelContent.appendChild(closeButtonDelete)
+	deleteModelContent.appendChild(deleteModalForm)
+
+	deleteModal.appendChild(deleteModelContent)
+
+	deleteImg.addEventListener("click", function(){
+		deleteModal.style.display = "block";
+	})
+
+
 
 	todoInfo.appendChild(todoIcon)
 	todoInfo.appendChild(name)
@@ -168,6 +214,7 @@ function generateHTMLToDo(todo){
 	todoOptions.appendChild(editImg)
 	todoOptions.appendChild(editModal)
 	todoOptions.appendChild(deleteImg)
+	todoOptions.appendChild(deleteModal)
 
 	todoContainer.appendChild(todoInfo)
 	todoContainer.appendChild(todoOptions)
