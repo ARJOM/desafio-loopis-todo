@@ -5,9 +5,11 @@ window.onload = () => {
 	if (todos !== null)	{
 		
 		todos.sort((first, second) => {
-			if (second.name < first.name){
+			const secondName = second.name.toLowerCase()
+			const firstName = first.name.toLowerCase()
+			if (secondName < firstName){
 				return 1
-			} else if (first.name < second.name){
+			} else if (firstName < secondName){
 				return -1
 			} else {
 				return first.id - second.id
@@ -17,6 +19,13 @@ window.onload = () => {
 		todos.forEach(todo => generateHTMLToDo(todo))
 	}
 	else setTodos([])
+
+	// Adicionar função de salvar Todo
+	const salvar = document.querySelector("#save-button")
+	salvar.addEventListener("click", function(){
+		addTodoForm()
+	})
+	
 }
 
 function getTodoById(id){
@@ -44,6 +53,7 @@ function addTodoForm(){
 
 	const todo = {id, name, status}
 	addTodo(todo)
+	window.location.reload()
 }
 
 function editTodoForm(id){

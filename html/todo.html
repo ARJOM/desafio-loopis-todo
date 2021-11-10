@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/todo.css">
+    <link rel="stylesheet" href="../css/modal.css">
 </head>
 <body>
     <main>
@@ -19,7 +20,19 @@
             <section>
                 <div class="todos"></div>
                 <div class="add-button">
-                    <img src="../assets/icons/plus-circle.svg"/>
+                    <img id="myBtn" src="../assets/icons/plus-circle.svg"/>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div>
+                                <input type="text" id="todo-input" placeholder="Digite a nova tarefa" />
+                                <button id="save-button">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -29,5 +42,6 @@
     <script src="../js/check.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/filtro.js"></script>
+    <script src="../js/modal.js"></script>
 </body>
 </html>
