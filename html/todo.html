@@ -17,9 +17,32 @@
                 <input type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisa"/>
             </nav>
             <section>
-
+                <div class="todo">
+                    <div class="done" onclick="changeCheck(this)">
+                        <div></div>
+                        <p class="nome">Fazer comida</p>
+                    </div>
+                    <div>
+                        <img src="../assets/icons/Edit.svg" height="20"/>
+                        <img src="../assets/icons/trash-alt.svg" height="20"/>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="backlog">
+                        <div></div>
+                        <p>Arrumar a mala</p>
+                    </div>
+                    <div>
+                        <img src="../assets/icons/Edit.svg" height="20"/>
+                        <img src="../assets/icons/trash-alt.svg" height="20"/>
+                    </div>
+                </div>
+                
             </section>
         </div>
     </main>
+
+    <!-- Scripts -->
+    <script src="../js/check.js"></script>
 </body>
 </html>
